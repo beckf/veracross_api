@@ -7,7 +7,7 @@ setup(
     description = 'Simple library for interacting with the Veracross API',
     author = 'Forrest Beck',
     author_email = 'forrest.beck@da.org',
-    url = 'https://github.com/beckf',
+    url = 'https://github.com/beckf/veracross_api',
     download_url = 'https://github.com/beckf/veracross_api/archive/v.01.tar.gz',
     keywords = ['Veracross', 'API'],
     install_requires=[
