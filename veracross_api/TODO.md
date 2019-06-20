@@ -1,0 +1,1 @@
+- Change parameters to accept dictionary instead of string.
