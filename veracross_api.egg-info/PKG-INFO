@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: veracross-api
-Version: 0.2
+Version: 0.4
 Summary: Simple library for interacting with the Veracross API
 Home-page: https://github.com/beckf/veracross_api
 Author: Forrest Beck
@@ -16,17 +16,32 @@ Description: # Veracross API Python Library
         ```python
         import veracross_api as v
         
-        c = {'vcurl': 'https://api.veracross.com/XschoolshortnameX/v2',
+        c = {'school_short_name': 'abc',
                 'vcuser': 'username',
                 'vcpass': 'password'
-                }
+        }
         
+        # Create a new object with library
         vc = v.Veracross(c)
+        
+        # Follow the guidelines specified here: https://api.veracross.com/docs
+        # Specify the target documented in the api or just one record from that target.
+        # Examples of targets are: facstaff, students, classes, courses, course_schedules, enrollments, etc.
+        # To return one record from that target, just specify the id number.
+        # Additional parameters are passed using a dictionary.
+        
+        # Return all faculty and staff
         data = vc.pull("facstaff")
         print(data)
+        
+        # Return one faculty and staff member by id
         data = vc.pull("facstaff/99999")
         print(data)
-        data = vc.pull("facstaff", "updated_after=2018-05-01")
+        
+        # Pass url parameters in a dictionary to the pull method.
+        # Return all faculty staff updated after 2019-01-01
+        param = {"updated_after": "2019-01-01"}
+        data = vc.pull("facstaff", parameters=param)
         print(data)
         ```
         

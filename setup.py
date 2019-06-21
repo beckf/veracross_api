@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='veracross_api',
     packages=['veracross_api'],
-    version='0.3',
+    version='0.4',
     description='Simple library for interacting with the Veracross API',
     long_description=long_description,
     long_description_content_type='text/markdown',
