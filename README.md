@@ -15,6 +15,12 @@ c = {'school_short_name': 'abc',
 # Create a new object with library
 vc = v.Veracross(c)
 
+# Follow the guidelines specified here: https://api.veracross.com/docs
+# Specify the target documented in the api or just one record from that target.
+# Examples of targets are: facstaff, students, classes, courses, course_schedules, enrollments, etc.
+# To return one record from that target, just specify the id number.
+# Additional parameters are passed using a dictionary.
+
 # Return all faculty and staff
 data = vc.pull("facstaff")
 print(data)
@@ -24,7 +30,6 @@ data = vc.pull("facstaff/99999")
 print(data)
 
 # Pass url parameters in a dictionary to the pull method.
-# Follow the guidelines specified here: https://api.veracross.com/docs
 # Return all faculty staff updated after 2019-01-01
 param = {"updated_after": "2019-01-01"}
 data = vc.pull("facstaff", parameters=param)
