@@ -7,10 +7,10 @@ Rate limiting and pagination will be handled automatically.
 
 Example of usage:
 
-c = {'vcurl': 'https://api.veracross.com/XschoolshortnameX/v2',
+c = {'school_short_name': 'abc',
         'vcuser': 'username',
         'vcpass': 'password'
-        }
+}
 
 import veracross_api as v
 vc = Veracross(c)
@@ -18,7 +18,8 @@ data = vc.pull("facstaff")
 print(data)
 data = vc.pull("facstaff/99999")
 print(data)
-data = vc.pull("facstaff", "updated_after=2018-05-01")
+param = {"updated_after": "2019-01-01"}
+data = vc.pull("facstaff", parameters=param)
 print(data)
 
 Returned will be a dictionary of data.
@@ -28,6 +29,7 @@ Returned will be a dictionary of data.
 import requests
 import math
 import time
+from urllib import parse
 
 __author__ = "Forrest Beck"
 
@@ -40,8 +42,14 @@ class Veracross(object):
         self.session = requests.Session()
         self.config = config
 
+        if 'school_short_name' in config:
+            self.api_url = 'https://api.veracross.com/{}/v2/'.format(str(config['school_short_name']))
+
+        if 'vcurl' in config:
+            self.api_url = config['vcurl']
+
     def __repr__(self):
-        return "VC API connected to " + str(self.config["vcurl"]) + " as " + str(self.config["vcuser"])
+        return "VC API connected to " + str(self.api_url) + " as " + str(self.config["vcuser"])
 
     def set_timers(self, limit_remaining, limit_reset):
         """
@@ -74,9 +82,9 @@ class Veracross(object):
             self.set_auth()
 
             if parameters is not None:
-                s = self.config['vcurl'] + "/" + source + ".json" + "?" + parameters
+                s = self.api_url + source + ".json?" + parse.urlencode(parameters, safe=':-')
             else:
-                s = self.config['vcurl'] + "/" + source + ".json"
+                s = self.api_url + source + ".json"
 
             r = self.session.get(s)
 
