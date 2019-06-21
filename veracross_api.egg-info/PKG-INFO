@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: veracross-api
+Version: 0.2
+Summary: Simple library for interacting with the Veracross API
+Home-page: https://github.com/beckf/veracross_api
+Author: Forrest Beck
+Author-email: forrest.beck@da.org
+License: MIT License
+Download-URL: https://github.com/beckf/veracross_api/archive/v.02.tar.gz
+Description: # Veracross API Python Library
+        Provides an easy way to pull information from the Veracross API in Python.
+        
+        Rate limiting and pagination will be handled automatically.
+        
+        Usage Example:
+        ```python
+        import veracross_api as v
+        
+        c = {'vcurl': 'https://api.veracross.com/XschoolshortnameX/v2',
+                'vcuser': 'username',
+                'vcpass': 'password'
+                }
+        
+        vc = v.Veracross(c)
+        data = vc.pull("facstaff")
+        print(data)
+        data = vc.pull("facstaff/99999")
+        print(data)
+        data = vc.pull("facstaff", "updated_after=2018-05-01")
+        print(data)
+        ```
+        
+        All data will be returned as a dictionary.
+        
+        
+Keywords: Veracross,API
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
