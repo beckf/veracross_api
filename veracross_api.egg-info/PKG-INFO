@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: veracross-api
-Version: 0.4
+Version: 0.5
 Summary: Simple library for interacting with the Veracross API
 Home-page: https://github.com/beckf/veracross_api
 Author: Forrest Beck
@@ -25,8 +25,8 @@ Description: # Veracross API Python Library
         vc = v.Veracross(c)
         
         # Follow the guidelines specified here: https://api.veracross.com/docs
-        # Specify the target documented in the api or just one record from that target.
-        # Examples of targets are: facstaff, students, classes, courses, course_schedules, enrollments, etc.
+        # Specify the endpoint documented in the api or just one record from that target.
+        # Examples of endpoint are: facstaff, students, classes, courses, course_schedules, enrollments, etc.
         # To return one record from that target, just specify the id number.
         # Additional parameters are passed using a dictionary.
         
@@ -43,6 +43,13 @@ Description: # Veracross API Python Library
         param = {"updated_after": "2019-01-01"}
         data = vc.pull("facstaff", parameters=param)
         print(data)
+        
+        # Return the amount of requests left in rate limiting
+        vc.rate_limit_remaining
+        
+        # Return the amount of time left before the limit is reset
+        vc.rate_limit_reset
+        
         ```
         
         All data will be returned as a dictionary.
