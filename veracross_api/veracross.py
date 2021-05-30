@@ -82,7 +82,7 @@ class Veracross(object):
             self.set_auth()
 
             if parameters is not None:
-                s = self.api_url + source + ".json?" + parse.urlencode(parameters, safe=':-')
+                s = self.api_url + source + ".json?" + parse.urlencode(parameters, safe=':-,')
             else:
                 s = self.api_url + source + ".json"
 
