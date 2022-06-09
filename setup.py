@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='veracross_api',
     packages=['veracross_api'],
-    version='0.5',
+    version='1.0',
     description='Simple library for interacting with the Veracross API',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -17,7 +17,7 @@ setup(
     author='Forrest Beck',
     author_email='forrest.beck@da.org',
     url='https://github.com/beckf/veracross_api',
-    download_url='https://github.com/beckf/veracross_api/archive/v.02.tar.gz',
+    download_url='https://github.com/beckf/veracross_api/archive/refs/tags/v1.0.tar.gz',
     keywords=['Veracross', 'API'],
     install_requires=['requests'],
     classifiers=[
@@ -29,6 +29,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.10'
     ],
 )
